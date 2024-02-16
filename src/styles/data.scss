@@ -2,9 +2,9 @@
 
 $clock-font: "Quicksand", sans-serif;
 
-#output {
+#wrapper {
     font-family: $clock-font;
-    width: 300px;
+    width: 600px;
     margin: 100px auto;
     padding: 20px;
     border-radius: 12px;
@@ -16,9 +16,24 @@ $clock-font: "Quicksand", sans-serif;
     text-align: center;
 }
 
+input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: black;
+    font-family: $clock-font;
+    font-size: 1.5em;
+    text-align: center;
+}
+
 Button {
     display: block;
     width: 100%;
+    margin-top: 10px;
 }
 
 img {
