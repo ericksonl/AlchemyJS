@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+$clock-font: "Quicksand", sans-serif;
+
+#output {
+    font-family: $clock-font;
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    zoom: 1.5;
+    text-align: center;
+}
+
+Button {
+    display: block;
+    width: 100%;
+}
+
+img {
+    max-width: 100px;
+}
