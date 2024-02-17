@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+$main-font: "Quicksand", sans-serif;
+
+$input-primary: #c3d0e1;
+$input-accent: #ced5df;
+$button: #025BFF;
+$button-hover: #003CBD;
+$background: #000D26;
+$foreground: whitesmoke;
+
+body {
+    background-color: $background;
+    color: $foreground;
+}
+
+#heading {
+    padding-bottom: 20px;
+}
+
+#wrapper {
+    font-family: $main-font;
+    width: 700px;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    zoom: 1.5;
+}
+
+#input-wrapper {
+    position: relative;
+}
+
+#wrapper span {
+    position: absolute;
+    left: 2px;
+    padding-top: 20px;
+    filter: invert(76%) sepia(46%) saturate(5026%) hue-rotate(197deg) brightness(99%) contrast(87%)
+}
+
+#input {
+    width: 100%;
+    text-align: center;
+    padding: 10px 35px 10px 35px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background: $input-primary;
+    color: black;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#input:focus {
+    outline: none;
+    background-color: $input-accent;
+}
+
+.btn {
+    width: 100%;
+    background-color: $button;
+    border: none;
+}
+
+
+
+#wallet-btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    background-color: $button;
+    border: none;
+}
+
+#wallet-btn:hover {
+    background-color: $button-hover;
+}
