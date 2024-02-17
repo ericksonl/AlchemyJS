@@ -32,17 +32,49 @@ body {
     position: relative;
 }
 
-#wrapper span {
+.currency-button {
+    margin-right: 256px;
+    margin-left: -245px;
+    border: 2px solid $button-hover;
+    padding: 5px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.currency-button:hover {
+    background-color: $button;
+    border: 2px solid $button;
+}
+
+.currency-button.active {
+    background-color: $button;
+    color: $foreground;
+    border: 2px solid $button;
+}
+
+.currency-button input[type='radio'] {
+    display: none;
+}
+
+#currency-icon {
+    pointer-events: none;
     position: absolute;
-    left: 2px;
-    padding-top: 20px;
+    left: 5px;
+    padding-top: 60px;
     filter: invert(76%) sepia(46%) saturate(5026%) hue-rotate(197deg) brightness(99%) contrast(87%)
+}
+
+#currency {
+    width: 40px;
+    height: 40px;
 }
 
 #input {
     width: 100%;
     text-align: center;
-    padding: 10px 35px 10px 35px;
+    padding: 15px 50px 15px 50px;
     margin: 10px 0;
     border: none;
     border-radius: 5px;
@@ -50,6 +82,7 @@ body {
     color: black;
     font-size: 1.5em;
     text-align: center;
+    background-size: 20px;
 }
 
 #input:focus {
@@ -57,20 +90,14 @@ body {
     background-color: $input-accent;
 }
 
-.btn {
-    width: 100%;
-    background-color: $button;
-    border: none;
-}
-
-
-
 #wallet-btn {
     display: block;
     width: 100%;
+    height: 50px;
     margin-top: 10px;
     background-color: $button;
     border: none;
+    transition: all 0.3s ease;
 }
 
 #wallet-btn:hover {
