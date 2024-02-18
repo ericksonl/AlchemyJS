@@ -11,7 +11,7 @@ const Browser = () => {
         let address = document.getElementById('input').value;
         console.log(currency, address);
         if (currency === 'eth' && address.startsWith('0x') && address.length === 42) {
-            navigate(`/wallet/${address}`);
+            navigate(`/wallet?address=${address}&currency=${currency}`);
         } else if (currency === 'sol' && address.length >= 44) {
             navigate(`/wallet/${address}`);
         } else {
