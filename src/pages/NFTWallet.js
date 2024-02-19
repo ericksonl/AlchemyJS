@@ -1,51 +1,71 @@
-import React from 'react'
-import Button from 'react-bootstrap/Button'
-import { Link } from "react-router-dom";
-import '../styles/browser.scss'
-import { useLocation } from 'react-router-dom';
+import React from 'react';
+import Col from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Button';
+import '../styles/wallet.scss';
 
-const Wallet = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const address = searchParams.get('address');
-  const currency = searchParams.get('currency');
+class Wallet extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      address: '',
+      currency: '',
+      data: []
+    };
+  }
 
-  let options = { method: 'GET', headers: { accept: 'application/json' } }
-  fetch(`https://eth-mainnet.g.alchemy.com/nft/v3/${process.env.React_App_API_KEY}/getNFTsForOwner?owner=${address}&withMetadata=true&pageSize=100`, options)
-    .then(res => res.json())
-    .then((result) => {
-      console.log(result)
-      // this.setState({
-      //   data: result.ownedNfts,
-      //   dataLength: result.ownedNfts.length
-      // })
-    })
-    .catch(error => {
-      // document.getElementById('output').innerHTML = 'Error: Invalid wallet address or no NFTs found. Please try again.'
-      console.error('Error:', error)
-    })
+  componentDidMount() {
+    const searchParams = new URLSearchParams(window.location.search);
+    const address = searchParams.get('address');
+    const currency = searchParams.get('currency');
+    this.setState({ address, currency });
+    let options = { method: 'GET', headers: { accept: 'application/json' } }
+    fetch(`https://eth-mainnet.g.alchemy.com/nft/v3/${process.env.React_App_API_KEY}/getNFTsForOwner?owner=${address}&withMetadata=true&pageSize=100`, options)
+      .then(res => res.json())
+      .then((result) => {
+        console.log(result.ownedNfts)
+        this.setState({
+          data: result.ownedNfts
+        })
+      })
+      .catch(error => {
+        // document.getElementById('output').innerHTML = 'Error: Invalid wallet address or no NFTs found. Please try again.'
+        console.error('Error:', error)
+      })
+  }
 
+  render() {
+    const { address, currency } = this.state;
+    return (
+      <div id='nft-wrapper'>
+        <div>
+          <h1 id='heading'>NFT Portfolio Tracker</h1>
+          {this.state.data.length === 0 ?
 
-  // let collection = this.state.data
-  // console.log(collection)
+            <div>
+              <h2 id='output'>Loading...</h2>
+            </div> :
+            <div>
+              <h2 id='output'>NFTs in {currency} wallet {address}</h2>
+              <div id='nft-container'>
+                <Container>
+                  <Row>
+                    {this.state.data.map((nft, index) => (
+                      <Col key={index} className='nft-card'>
+                        <img id='nft-image' src={nft.image.cachedUrl} alt='NFT' />
+                        <h3>{nft.name}</h3>
+                      </Col>
+                    ))}
+                  </Row>
+                </Container>
 
-  return (
-    <div id='wrapper'>
-      <h1>HELLO</h1>
-      {/* //FIX: If name is Deprecated, dont map it */}
-      {/* <div id='output'>  
-        {collection.length !== 1 ? collection.map((item, index) => (
-          <div key={index}>
-            <img src={item.image.pngUrl ? item.image.pngUrl : item.contract.openSeaMetadata.imageUrl} />
-            <p>{item.name ? item.name : item.collection.name + ' ' + item.tokenId}</p>
-          </div>
-        )) : ''
-        }
-      </div> */}
-      <p>Address: {address}</p>
-      <p>Currency: {currency}</p>
-    </div>
-  )
-};
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Wallet;
