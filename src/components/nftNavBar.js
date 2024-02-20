@@ -1,7 +1,9 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import React from 'react';
+import gatherCollections from './GetCollections';
 
-const NftNavBar = () => {
+const nftNavBar = () => {
+    gatherCollections(); // This line is causing the error
     return (
         <div id='nft-nav-bar'>
             <Dropdown>
@@ -32,4 +34,4 @@ const NftNavBar = () => {
     )
 }
 
-export default NftNavBar;
+export default nftNavBar;
