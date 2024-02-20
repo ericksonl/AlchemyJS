@@ -5,8 +5,8 @@ const NftNavBar = () => {
     return (
         <div id='nft-nav-bar'>
             <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    Dropdown Button
+                <Dropdown.Toggle id="dropdown-basic-button">
+                    All Collections
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
@@ -17,7 +17,7 @@ const NftNavBar = () => {
             </Dropdown>
 
             <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                <Dropdown.Toggle id="dropdown-basic-button">
                     Dropdown Button
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
