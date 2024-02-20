@@ -1,6 +1,6 @@
 import React from 'react';
 import ownedNfts from './exampleData';
-import NftNavBar from './NftNavBar.js';
+import NftNavBar from './nftNavBar';
 import NFTCard from '../components/NFTCard';
 
 class DataGather extends React.Component {
@@ -44,6 +44,7 @@ class DataGather extends React.Component {
           </div> :
           <div id="card-wrapper">
             <h3 id='title'>NFTs</h3>
+            {/*BUG: This line is causing the error*/}
             <NftNavBar />
             <div id='nft-container'>
               {
@@ -57,6 +58,7 @@ class DataGather extends React.Component {
                 ))
               }
             </div>
+
           </div>
         }
       </>
