@@ -16,7 +16,7 @@ class NFTCard extends React.Component {
             elements = <img key={index} className="nft-image" src={placeholderImage} alt='NFT' />;
         }
 
-        const collection_logo_src = nft.collection.bannerImageUrl ? nft.collection.bannerImageUrl : placeholderImage;
+        const collection_logo_src = nft.contract.openSeaMetadata.imageUrl ? nft.contract.openSeaMetadata.imageUrl : placeholderImage;
         const name = nft.name ? nft.name : nft.contract.name;
         let total = nft.contract.openSeaMetadata.floorPrice ? (Math.round(nft.contract.openSeaMetadata.floorPrice * 10000000) / 10000000) : '0';
 
