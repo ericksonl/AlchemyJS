@@ -21,6 +21,7 @@ class NFTCard extends React.Component {
         let total = nft.contract.openSeaMetadata.floorPrice ? (Math.round(nft.contract.openSeaMetadata.floorPrice * 10000000) / 10000000) : '0';
 
         return (
+            
             <>
                 {elements}
                 <p className='nft-name'> {name}</p>
