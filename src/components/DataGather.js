@@ -3,6 +3,7 @@ import ownedNfts from './exampleData';
 import NavItem from './NavItem';
 import NFTCard from '../components/NFTCard';
 import Dropdown from 'react-bootstrap/Dropdown';
+import '../styles/nav.scss';
 
 class DataGather extends React.Component {
   constructor(props) {
@@ -15,13 +16,36 @@ class DataGather extends React.Component {
     };
   }
 
+
   componentDidMount() {
+
+    let tempCollections = []
+    ownedNfts.map((nft) => {
+      tempCollections.push(nft.collection.name)
+    })
+
+    let solid = tempCollections.filter((value, index) => tempCollections.indexOf(value) === index)
+
     this.setState({
       data: ownedNfts,
-      collections: ownedNfts.map((nft) => {
-        return nft.collection.name
-      })
+      collections: solid,
     })
+
+
+
+    // const { address } = this.props;
+    // let options = { method: 'GET', headers: { accept: 'application/json' } }
+    // fetch(`https://eth-mainnet.g.alchemy.com/nft/v3/${process.env.React_App_API_KEY}/getNFTsForOwner?owner=${address}&withMetadata=true&pageSize=100`, options)
+    //   .then(res => res.json())
+    //   .then((result) => {
+    //     console.log(result.ownedNfts)
+    //     this.setState({
+    //       data: result.ownedNfts
+    //     })
+    //   })
+    //   .catch(error => {
+    //     console.error('Error:', error)
+    //   })
 
     console.log(this.state.collections)
   }
@@ -36,15 +60,16 @@ class DataGather extends React.Component {
             </div> :
             <div id="card-wrapper">
               <h3 id='title'>NFTs</h3>
-              <Dropdown>
+              <Dropdown id='collection-dropdown'>
                 <Dropdown.Toggle id="dropdown-basic-button">
-                  Dropdown Button
+                  All Collections
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   {
-                    this.state.collections.map(item => (
+                    this.state.collections.map((item, index) => (
                       <NavItem
                         collection={item}
+                        key={index}
                       />
                     ))
                   }
